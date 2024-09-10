@@ -14,6 +14,7 @@ export class CitiesComponent implements OnInit, OnChanges{
   cities: City[] = [];
   selectedCity: any = null;
   hover: any = null;
+  active = true;
 
   constructor(private cityService: CityService){}
 
@@ -32,7 +33,9 @@ export class CitiesComponent implements OnInit, OnChanges{
   }
 
   selectCity(city: any) {
-    this.selectedCity = city;
+    this.hideAttraction();
+    if (city == this.selectedCity) this.selectedCity = null;
+    else this.selectedCity = city;
   }
 
   showAttraction(attraction: any) {
@@ -43,4 +46,7 @@ export class CitiesComponent implements OnInit, OnChanges{
     this.hover = null;
   }
 
+  onBurgerClicked() {
+    this.active = !this.active;
+  }
 }

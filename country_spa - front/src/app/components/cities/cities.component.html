@@ -1,8 +1,14 @@
 <section>
-  <div class="city-list" [class.column]="selectedCity">
+  <div class="burger-menu" [class.active]="active" (click)="onBurgerClicked()" *ngIf="selectedCity">
+    <div class="burger-container">
+      <div class="burger-inner"></div>
+    </div>
+  </div>
+
+  <div class="city-list" [class.column]="selectedCity" *ngIf="active">
     <div *ngIf="cities.length > 0; else noCities">
     </div>
-
+  
     <div *ngFor="let city of cities" class="city-card" (click)="selectCity(city)">
       <img [src]="city.imgUrl" alt="{{ city.name }}">
       <h2>{{ city.name }}</h2>
@@ -13,9 +19,16 @@
     <h2>{{ selectedCity.name }}</h2>
 
     <div class="tourist-attractions">
-      <div *ngFor="let attraction of selectedCity.touristAttractions" class="attraction-card">
-        <img [src]="attraction.imgUrl" alt="{{ attraction.name }}" (mouseenter)="showAttraction(attraction)" (mouseleave)="hideAttraction()">
+      <div class="cards">
+        <div *ngFor="let attraction of selectedCity.touristAttractions" class="attraction-card">
+          <img [src]="attraction.imgUrl" alt="{{ attraction.name }}" (click)="showAttraction(attraction)" *ngIf="!hover">
+        </div>
       </div>
+
+      <div *ngIf="hover" class="selected-attraction_img" (click)="hideAttraction()">
+        <img src="{{hover.imgUrl}}" alt="">
+      </div>
+
       <div *ngIf="hover" class="attraction-description">
         <h4>{{ hover.name }}</h4>
         <p>{{ hover.description }}</p>
