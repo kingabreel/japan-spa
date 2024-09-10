@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CityService } from '../../service/city.service';
 import { City } from '../../model/city';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cities.component.html',
   styleUrl: './cities.component.scss'
 })
-export class CitiesComponent implements OnInit, OnChanges{
+export class CitiesComponent implements OnInit{
   cities: City[] = [];
   selectedCity: any = null;
   hover: any = null;
@@ -22,14 +22,9 @@ export class CitiesComponent implements OnInit, OnChanges{
     this.cityService.getCity().subscribe({
       next: (data) => {
         this.cities = data.content;
-        console.log(data);
       },
       error: (error) => console.log(error)
     })
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    
   }
 
   selectCity(city: any) {

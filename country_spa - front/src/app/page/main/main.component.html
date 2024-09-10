@@ -1,4 +1,6 @@
-<app-header></app-header>
+<app-header (popupEvent)="handlePopupEvent($event)"></app-header>
+
+<div class="overlay" *ngIf="showPopup" (click)="closePopup()"></div>
 
 <div class="japanese-slogan">
     <p>
@@ -34,3 +36,10 @@
 </div>
 
 <app-cities></app-cities>
+
+<div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
+        <button mat-button (click)="closePopup()">X</button>
+        <app-auth-form popup="{{popupType}}"></app-auth-form>
+    </div>
+</div>

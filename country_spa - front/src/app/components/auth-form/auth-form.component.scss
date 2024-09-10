@@ -1,0 +1,50 @@
+.auth-card {
+    width: 30vw;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ddb1f7, #b181e7);
+    border-top: 8px solid #ffe4e1; 
+}
+
+mat-card-title {
+    margin-bottom: 15px;
+    color: #6A6DDE;
+}
+  
+.mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+mat-label {
+    color: #6A6DDE;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+form > button {
+    background-color: #e5a2ff;
+    color: #6A6DDE;
+}
+  
+form > button:hover {
+    background-color: #e9c2f8; 
+    transition: 500ms;
+}
+  
+mat-card-actions button {
+    color: #6A6DDE; 
+}
+  
+mat-form-field {
+    width: 100%;
+}
+
+mat-form-field input {
+    padding: 12px;
+    height: 20px;
+    width: 90%;
+    font-size: 16px;
+}
