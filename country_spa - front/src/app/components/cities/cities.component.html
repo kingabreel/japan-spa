@@ -1,1 +1,31 @@
-<p>cities works!</p>
+<section>
+  <div class="city-list" [class.column]="selectedCity">
+    <div *ngIf="cities.length > 0; else noCities">
+    </div>
+
+    <div *ngFor="let city of cities" class="city-card" (click)="selectCity(city)">
+      <img [src]="city.imgUrl" alt="{{ city.name }}">
+      <h2>{{ city.name }}</h2>
+    </div>
+  </div>
+
+  <article *ngIf="selectedCity" class="tourist-attractions-container">
+    <h2>{{ selectedCity.name }}</h2>
+
+    <div class="tourist-attractions">
+      <div *ngFor="let attraction of selectedCity.touristAttractions" class="attraction-card">
+        <img [src]="attraction.imgUrl" alt="{{ attraction.name }}" (mouseenter)="showAttraction(attraction)" (mouseleave)="hideAttraction()">
+      </div>
+      <div *ngIf="hover" class="attraction-description">
+        <h4>{{ hover.name }}</h4>
+        <p>{{ hover.description }}</p>
+      </div>
+    </div>
+  </article>
+
+  <ng-template #noCities>
+      <p>No cities available</p>
+  </ng-template>
+
+</section>
+
