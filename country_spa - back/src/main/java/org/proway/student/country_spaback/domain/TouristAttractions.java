@@ -1,5 +1,6 @@
 package org.proway.student.country_spaback.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +30,7 @@ public class TouristAttractions {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
+    @JsonIgnore
     private City city;
 
 }

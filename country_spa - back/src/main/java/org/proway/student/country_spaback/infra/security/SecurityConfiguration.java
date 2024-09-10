@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/v1/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/v1/api/auth/logout").permitAll()
                         .requestMatchers(HttpMethod.POST, "/v1/api/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/city").permitAll()
                         .anyRequest().authenticated()
                 )
                 .build();
