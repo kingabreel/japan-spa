@@ -20,7 +20,7 @@ public class DefaultAdmin {
     @Bean
     CommandLineRunner initAdmin() {
         return args -> {
-            String adminEmail = "admin@hospital.com";
+            String adminEmail = "admin@spa.com";
             if (userRepository.findByEmail(adminEmail) == null) {
                 User admin = new User();
                 admin.setName("Admin");
