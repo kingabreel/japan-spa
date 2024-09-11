@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.Join;
 import org.apache.coyote.BadRequestException;
 import org.proway.student.country_spaback.domain.City;
 import org.proway.student.country_spaback.domain.Comment;
+import org.proway.student.country_spaback.domain.User;
 import org.proway.student.country_spaback.domain.dto.CommentDto;
 import org.proway.student.country_spaback.domain.response.CommentResponseDto;
 import org.proway.student.country_spaback.repository.CityRepository;
@@ -64,20 +65,19 @@ public class CommentService {
     public Comment addComment(CommentDto commentDto) {
         Comment comment = new Comment();
 
-        UUID userId = UUID.fromString(commentDto.userId());
         UUID cityId = UUID.fromString(commentDto.cityId());
 
         var city = cityRepository.findById(cityId);
-        var user = userRepository.findById(userId);
+        var user = userRepository.findByEmail(commentDto.userMail());
 
-        if (city.isEmpty() || user.isEmpty()) throw new RuntimeException("User or city id doesn't exists");
+        if (city.isEmpty() || user == null) throw new RuntimeException("User or city id doesn't exists");
 
         if (commentDto.commentText() == null || commentDto.commentText().length() < 5) throw new RuntimeException("Comment must have more than 5 characters");
 
         comment.setCommentText(commentDto.commentText());
         comment.setCreatedAt(LocalDateTime.now());
         comment.setCity(city.get());
-        comment.setUser(user.get());
+        comment.setUser((User) user);
 
         return commentRepository.save(comment);
     }
