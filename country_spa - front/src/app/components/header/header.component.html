@@ -4,7 +4,8 @@
     </div>
 
     <div class="auth">
-        <button mat-button (click)="openPopup('login')">Login</button>
-        <button mat-button (click)="openPopup('register')">Register</button>
+        <button mat-button (click)="openPopup('login')" *ngIf="!logged">Login</button>
+        <button mat-button (click)="openPopup('register')" *ngIf="!logged">Register</button>
+        <button mat-button (click)="logout()" *ngIf="logged">Logout</button>
     </div>
 </header>

@@ -12,7 +12,7 @@ export class CityService {
 
   constructor(private http: HttpClient) { }
 
-  getCity(): Observable<Page<City>>{
-    return this.http.get<Page<City>>(this.url);
+  getCity(pageNumber: number = 0, pageSize: number = 10): Observable<Page<City>>{
+    return this.http.get<Page<City>>(`${this.url}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
 }

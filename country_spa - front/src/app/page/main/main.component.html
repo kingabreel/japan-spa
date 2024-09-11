@@ -1,4 +1,4 @@
-<app-header (popupEvent)="handlePopupEvent($event)"></app-header>
+<app-header #header (loginStatusChanged)="onLoginEvent()" (popupEvent)="handlePopupEvent($event)"></app-header>
 
 <div class="overlay" *ngIf="showPopup" (click)="closePopup()"></div>
 
@@ -37,9 +37,11 @@
 
 <app-cities></app-cities>
 
+<app-comments></app-comments>
+
 <div class="popup" *ngIf="showPopup">
     <div class="popup-content">
         <button mat-button (click)="closePopup()">X</button>
-        <app-auth-form popup="{{popupType}}"></app-auth-form>
+        <app-auth-form popup="{{popupType}}" (closePopupEvent)="closePopup()" (loginEvent)="onLoginEvent()"></app-auth-form>
     </div>
 </div>

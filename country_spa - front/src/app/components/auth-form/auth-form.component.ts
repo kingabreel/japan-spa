@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +18,9 @@ export class AuthFormComponent {
   isLoginMode: boolean = false;
   @Input()
   popup:string = '';
+
+  @Output() closePopupEvent = new EventEmitter<void>();
+  @Output() loginEvent = new EventEmitter<void>();
 
   name: string = '';
   email: string = '';
@@ -39,13 +42,19 @@ export class AuthFormComponent {
   onSubmit() {
     if (this.isLoginMode) {
       this.service.login({email: this.email, password: this.password}).subscribe(token => {
-        localStorage.setItem('authToken', token.token_access);
+        console.log(token);
+        localStorage.setItem('token', token.token);
+        this.closePopupEvent.emit();
+        this.loginEvent.emit();
       });
     } else {
       if (this.password == this.confirmPassword){
         this.service.register({name: this.name, email: this.email, password: this.password}).subscribe(() => {
           alert("User registered succesfully");
           this.isLoginMode = true;
+          this.email = '';
+          this.password = '';
+          this.confirmPassword = '';
         })
       } else {
         alert("Password didn't match");
