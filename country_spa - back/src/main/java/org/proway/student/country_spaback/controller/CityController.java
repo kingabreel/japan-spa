@@ -1,7 +1,9 @@
 package org.proway.student.country_spaback.controller;
 
 import org.proway.student.country_spaback.domain.City;
+import org.proway.student.country_spaback.domain.TouristAttractions;
 import org.proway.student.country_spaback.domain.dto.CityDto;
+import org.proway.student.country_spaback.domain.dto.TouristAttractionsDto;
 import org.proway.student.country_spaback.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,5 +32,10 @@ public class CityController {
     @PostMapping
     public ResponseEntity<City> addCity(@RequestBody CityDto cityDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(cityService.addCity(cityDto));
+    }
+
+    @PostMapping("/touristic-attractions")
+    public ResponseEntity<TouristAttractions> addTouristicAttraction(@RequestBody TouristAttractionsDto touristAttractionsDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(cityService.addTouristicAttraction(touristAttractionsDto));
     }
 }
