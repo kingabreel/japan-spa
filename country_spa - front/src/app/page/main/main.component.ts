@@ -7,17 +7,20 @@ import { MatButton } from '@angular/material/button';
 import { jwtDecode } from 'jwt-decode';
 import { CommentsComponent } from "../../components/comments/comments.component";
 import { HeaderComponent } from '../../components/header/header.component';
+import { AdminCardComponent } from "../../components/admin-card/admin-card.component";
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [HeaderComponent, ParallaxDirective, CitiesComponent, CommonModule, AuthFormComponent, MatButton, CommentsComponent],
+  imports: [HeaderComponent, ParallaxDirective, CitiesComponent, CommonModule, AuthFormComponent, MatButton, CommentsComponent, AdminCardComponent, FooterComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
   @ViewChild(HeaderComponent) headerComponent?: HeaderComponent;
 
+  showAdminPanel: boolean = false;
   showPopup: boolean = false;
   popupType: string = '';
   
@@ -47,6 +50,14 @@ export class MainComponent implements OnInit {
   closePopup() {
     this.showPopup = false;
     this.popupType = '';
+  }
+
+  openAdminPanel(){
+    this.showAdminPanel = true;
+  }
+
+  closeAdminPanel(){
+    this.showAdminPanel = false;
   }
 
   onLoginEvent() {

@@ -4,3 +4,9 @@ export interface City {
     imgUrl: string,
     touristAttractions: []
 }
+
+export interface AddCity {
+    name: string,
+    imgUrl: string,
+    touristAttractions: []
+}

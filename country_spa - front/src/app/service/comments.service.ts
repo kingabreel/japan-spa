@@ -23,7 +23,7 @@ export class CommentsService {
   addComment(token: string, comment: CreateComment): Observable<CreateCommentResponse>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}` 
-  });
+    });
     return this.http.post<CreateCommentResponse>(this.url, comment, {headers});
   }
 }

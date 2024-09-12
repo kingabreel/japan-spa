@@ -41,3 +41,8 @@
   </ng-template>
 </section>
 
+<mat-paginator [length]="totalElements"
+  [pageSize]="12"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
