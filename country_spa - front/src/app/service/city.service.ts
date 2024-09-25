@@ -9,7 +9,7 @@ import { AddTouristicAttraction, TouristicAttraction } from '../model/touristicA
   providedIn: 'root'
 })
 export class CityService {
-  private url = 'http://localhost:8080/api/v1/city'
+  private url = 'https://japan-spa.onrender.com/api/v1/city'
 
   constructor(private http: HttpClient) { }
 

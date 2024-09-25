@@ -8,7 +8,7 @@ import { Page } from '../model/page';
   providedIn: 'root'
 })
 export class CommentsService {
-  private url = 'http://localhost:8080/api/v1/comment'
+  private url = 'https://japan-spa.onrender.com/api/v1/comment'
 
   constructor(private http: HttpClient) { }
 
