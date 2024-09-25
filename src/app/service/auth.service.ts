@@ -7,7 +7,7 @@ import { Login, Register } from '../model/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:8080/api/v1/auth'
+  private url = 'https://japan-spa.onrender.com/api/v1/auth'
 
   constructor(private http: HttpClient) { }
 
